@@ -1,22 +1,19 @@
 class Solution {
     public String convertToBase7(int num) {
-        String temp = "";
-        boolean negative = false;
         if(num == 0)
             return "0";
+        boolean negative =false;
         if(num < 0){
             negative = true;
             num = Math.abs(num);
         }
-
-        while (num > 0){
-            int reminder = num % 7;
-            temp = String.valueOf(reminder) + temp;
+        StringBuilder sb = new StringBuilder();
+        while(num > 0){
+            sb.append(num % 7);
             num /= 7;
         }
-        if(negative){
-            temp = '-'+temp;
-        }
-        return temp;
+        if(negative)    
+            sb.append('-');
+        return sb.reverse().toString();
     }
 }
